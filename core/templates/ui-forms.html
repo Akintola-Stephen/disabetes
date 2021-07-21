@@ -1,0 +1,181 @@
+{% extends "layouts/base.html" %} {% block title %} UI Forms {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<div
+  class="pcoded-content"
+  style="font-family: ubuntu light; font-size: 12px; font-weight: solid"
+>
+  <div class="pcoded-inner-content">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+      <div class="page-block">
+        <div class="row align-items-center">
+          <div class="col-md-12"></div>
+        </div>
+      </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <div class="main-body">
+      <div class="page-wrapper">
+        <!-- [ Main Content ] start -->
+        <div class="row">
+          <div class="col-sm-12">
+            <form method="POST" action="{% url 'diagnose' %}">
+              {% csrf_token %}
+              <div class="card">
+                <div class="card-header">
+                  <h5><b> DIAGNOSE PATIENT </b></h5>
+                </div>
+                <div class="card-body">
+                  <h5><b>REGISTRATION</b></h5>
+                  <hr />
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3 form-control-sm">
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="name"
+                          class="form-control"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          placeholder="Enter email"
+                        />
+                      </div>
+
+                      <div class="mb-3 form-control-sm">
+                        <input
+                          type="date"
+                          name="dob"
+                          placeholder="DOB"
+                          class="form-control"
+                          id="exampleInputDOB"
+                          placeholder="Password"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="mb-3 form-control-sm">
+                        <input
+                          type="email"
+                          name="mail"
+                          class="form-control"
+                          placeholder="E-mail"
+                        />
+                      </div>
+
+                      <div class="mb-3 form-control-sm">
+                        <select
+                          class="form-control"
+                          name="gender"
+                          id="exampleFormControlSelect1"
+                        >
+                          <option>Select Gender</option>
+                          <option>Male</option>
+                          <option>Female</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h5 class="mt-5"><b>DIAGNOSIS</b></h5>
+                  <hr />
+                  <div class="row">
+                    <div class="col-md-6">
+                      <input
+                        class="mb-3 form-control form-control-sm"
+                        type="number"
+                        name="Pregnancies"
+                        placeholder="Pregnancies"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <input
+                        class="mb-3 form-control form-control-sm"
+                        type="number"
+                        name="Glucose"
+                        placeholder="Glucose"
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <input
+                        class="mb-3 form-control form-control-sm"
+                        type="number"
+                        name="BloodPressure"
+                        placeholder="BloodPressure"
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <input
+                        class="mb-3 form-control form-control-sm"
+                        type="number"
+                        name="SkinThickness"
+                        placeholder="SkinThickness"
+                      />
+                    </div>
+                    <div class="col-md-4">
+                      <input
+                        class="mb-3 form-control form-control-sm"
+                        type="number"
+                        name="Insulin"
+                        placeholder="Insulin"
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <input
+                        class="mb-3 form-control form-control-sm"
+                        type="number"
+                        name="BMI"
+                        placeholder="BMI"
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <input
+                        class="mb-3 form-control form-control-sm"
+                        type="number"
+                        step=".01"
+                        name="DiabetesPedigreeFunction"
+                        placeholder="DiabetesPedigreeFunction"
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <input
+                        class="mb-3 form-control form-control-sm"
+                        type="number"
+                        name="Age"
+                        placeholder="Age"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <b>
+              <button
+                type="submit"
+                value="PREDICT"
+                class="btn btn-block btn-success"
+              >
+              <b>PREDICT</b>
+              </button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

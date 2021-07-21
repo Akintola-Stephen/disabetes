@@ -1,0 +1,250 @@
+{% extends "layouts/base.html" %} {% block title %} UI Tables {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<div class="pcoded-content">
+  <div class="pcoded-inner-content">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+      <div class="page-block">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <div class="col-xl-12 col-md-12 m-b-30">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active show"
+                    id="home-tab"
+                    data-toggle="tab"
+                    href="#home"
+                    role="tab"
+                    aria-controls="home"
+                    aria-selected="false"
+                    ><b>All</b></a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    id="profile-tab"
+                    data-toggle="tab"
+                    href="#profile"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="true"
+                    ><b>Diabetic</b></a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    id="contact-tab"
+                    data-toggle="tab"
+                    href="#contact"
+                    role="tab"
+                    aria-controls="contact"
+                    aria-selected="false"
+                    ><b>Non-Diabetic</b></a
+                  >
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div
+                  class="tab-pane fade"
+                  id="home"
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                >
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>User</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Status</th>
+                        <th class="text-right"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      {% for all in all_records %}
+                      <tr>
+                        <td>
+                          <h6 class="m-0">
+                            {% if all.gender == "Female" %}
+                            <img
+                              class="rounded-circle m-r-10"
+                              style="width: 40px"
+                              src="/static/assets/images/user/avatar-1.jpg"
+                              alt="activity-user"
+                            />
+
+                            {% else %}
+                            <img
+                              class="rounded-circle m-r-10"
+                              style="width: 40px"
+                              src="/static/assets/images/user/avatar-2.jpg"
+                              alt="activity-user"
+                            />
+
+                            {% endif %} <b>{{all.name}}</b>
+                          </h6>
+                        </td>
+                        <td>
+                          <h6 class="m-0"><b>{{all.age}}</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="m-0"><b>{{all.gender}}</b></h6>
+                        </td>
+
+                        {% if all.predicted_result == 0 %}
+                        <td>                         
+                          <h6 class="m-0 text-c-green"><b>Negative</b></h6>
+                        </td>
+                        <td class="text-right">
+                          <i class="fas fa-circle text-c-green f-10"></i>
+                        </td>
+                        {% else %}
+                        <td>                         
+                          <h6 class="m-0 text-c-red"><b>Positive</b></h6>
+                        </td>
+                        <td class="text-right">
+                          <i class="fas fa-circle text-c-red f-10"></i>
+                        </td>
+
+                        {% endif %}
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+
+                <div
+                  class="tab-pane fade active show"
+                  id="profile"
+                  role="tabpanel"
+                  aria-labelledby="profile-tab"
+                >
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>User</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Status</th>
+                        <th class="text-right"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for all in diabetic %}
+                      <tr>
+                        <td>
+                          <h6 class="m-0">
+                            {% if all.gender == "Female" %}
+                            <img
+                              class="rounded-circle m-r-10"
+                              style="width: 40px"
+                              src="/static/assets/images/user/avatar-1.jpg"
+                              alt="activity-user"
+                            />
+
+                            {% else %}
+                            <img
+                              class="rounded-circle m-r-10"
+                              style="width: 40px"
+                              src="/static/assets/images/user/avatar-2.jpg"
+                              alt="activity-user"
+                            />
+
+                            {% endif %} <b><b>{{all.name}}</b></b>
+                          </h6>
+                        </td>
+                        <td>
+                          <h6 class="m-0"><b>{{all.age}} </b></h6>
+                        </td>
+                        <td>
+                          <h6 class="m-0"><b>{{all.gender}}</b></h6>
+                        </td>
+                        
+                        <td>
+                          <h6 class="m-0 text-c-red"><b>Positive</b></h6>
+                        </td>
+                        <td class="text-right">
+                          <i class="fas fa-circle text-c-red f-10"></i>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="contact"
+                  role="tabpanel"
+                  aria-labelledby="contact-tab"
+                >
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>User</th>
+                        <th>Age</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th class="text-right"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for all in non_diabetic %}
+                      <tr>
+                        <td>
+                          <h6 class="m-0">
+                            {% if all.gender == "Female" %}
+                            <img
+                              class="rounded-circle m-r-10"
+                              style="width: 40px"
+                              src="/static/assets/images/user/avatar-3.jpg"
+                              alt="activity-user"
+                            />
+
+                            {% else %}
+                            <img
+                              class="rounded-circle m-r-10"
+                              style="width: 40px"
+                              src="/static/assets/images/user/avatar-2.jpg"
+                              alt="activity-user"
+                            />
+
+                            {% endif %} <b>{{all.name}}</b>
+                          </h6>
+                        </td>
+                        <td>
+                          <h6 class="m-0"><b>{{all.age}}</b></h6>
+                        </td>
+                        <td>
+                          <h6 class="m-0"><b><b>{{all.gender}}</b></b></h6>
+                        </td>
+                        <td>
+                          <h6 class="m-0 text-c-green"><b>Negative</b></h6>
+                        </td>
+                        <td class="text-right">
+                          <i class="fas fa-circle text-c-green f-10"></i>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
