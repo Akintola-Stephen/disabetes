@@ -1,4 +1,5 @@
-{% extends "layouts/base.html" %} {% block title %} Diabetics system {% endblock %}
+{% extends "layouts/base.html" %} {% block title %} Diabetics system {% endblock
+%}
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %} {% block content %}
@@ -16,19 +17,17 @@
           <div class="col-md-6 col-xl-4">
             <div class="card daily-sales">
               <div class="card-block">
-                <h6 class="mb-4"><b>Positive result</b></h6>
+                <h6 class="mb-4"><b>Total Diagnosed</b></h6>
                 <div class="row d-flex align-items-center">
                   <div class="col-9">
                     <h3 class="f-w-300 d-flex align-items-center m-b-0">
-                      <i
-                        class="feather icon-arrow-down text-c-red f-30 m-r-10"
-                      ></i>
-                      <b>{{ diabetic_count }}</b>
+                   
+                      <b>{{ records_count }}</b>
                     </h3>
                   </div>
 
                   <div class="col-3 text-right">
-                    <p class="m-b-0"><b>67%</b></p>
+               
                   </div>
                 </div>
                 <div class="progress m-t-30" style="height: 7px">
@@ -60,7 +59,7 @@
                     </h3>
                   </div>
                   <div class="col-3 text-right">
-                    <p class="m-b-0"><b>67%</b></p>
+               
                   </div>
                 </div>
                 <div class="progress m-t-30" style="height: 7px">
@@ -80,18 +79,18 @@
           <div class="col-md-12 col-xl-4">
             <div class="card yearly-sales">
               <div class="card-block">
-                <h6 class="mb-4"><b>Total Diagnosed</b></h6>
+                <h6 class="mb-4"><b>Positive result Diagnosed</b></h6>
                 <div class="row d-flex align-items-center">
                   <div class="col-9">
                     <h3 class="f-w-300 d-flex align-items-center m-b-0">
                       <i
-                        class="feather icon-arrow-up text-c-green f-30 m-r-10"
+                        class="feather icon-arrow-down text-c-red f-30 m-r-10"
                       ></i>
-                      <b> {{ records_count }}</b>
+                      <b> {{ diabetic_count }}</b>
                     </h3>
                   </div>
                   <div class="col-3 text-right">
-                    <p class="m-b-0"><b>80%</b></p>
+                
                   </div>
                 </div>
                 <div class="progress m-t-30" style="height: 7px">
@@ -172,46 +171,46 @@
             </div>
           </div>
 
-          <div class="col-md-6 col-xl-4">
-            <div class="card daily-sales">
-              <div class="card-block">
-                <h6 class="mb-4"><b>Daily Sales</b></h6>
-                <div class="row d-flex align-items-center">
-                  <div class="col-9">
-                    <h3 class="f-w-300 d-flex align-items-center m-b-0">
-                      <i
-                        class="feather icon-arrow-up text-c-green f-30 m-r-10"
-                      ></i>
-                      <b>249.95</b>
-                    </h3>
-                  </div>
-
-                  <div class="col-3 text-right">
-                    <p class="m-b-0"><b>67%</b></p>
-                  </div>
-                </div>
-                <div class="progress m-t-30" style="height: 7px">
-                  <div
-                    class="progress-bar progress-c-theme"
-                    role="progressbar"
-                    style="width: 50%"
-                    aria-valuenow="50"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+       
           <!-- [ Main Content ] end -->
         </div>
       </div>
     </div>
   </div>
 
+  {% block javascripts %}
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+    var config = {
+      type: 'bar',
+      data: {
+        datasets: [{
+          data: {{ data|safe }},
+          backgroundColor: [
+            '#000080', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'
+          ],
+          label: 'Population'
+        }],
+        labels: {{ labels|safe }}
+      },
+      options: {
+        responsive: true
+      }
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('pie-chart').getContext('2d');
+      window.myPie = new Chart(ctx, config);
+    };
+  </script>
+
+{% endblock javascripts %}
+
   {% endblock content %}
 
   <!-- Specific Page JS goes HERE  -->
-  {% block javascripts %}{% endblock javascripts %}
+ 
 </div>
+
+{% endblock %}

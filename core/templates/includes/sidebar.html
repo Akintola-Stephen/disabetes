@@ -25,6 +25,7 @@
             ><span class="pcoded-mtext"><b>Dashboard</b></span></a
           >
         </li>
+
         <li class="nav-item pcoded-menu-caption">
           <label>SETUP PAGES</label>
         </li>
@@ -50,18 +51,24 @@
           </ul>
         </li>
 
-        <!-- <li class="nav-item pcoded-menu-caption">
-                        <label>Chart & Maps</label>
-                    </li>
-                    <li data-username="Charts Morris" 
-                        class="nav-item {% if 'charts-morris' in segment %} active {% endif %}">
-                        <a href="/charts-morris.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">Chart</span></a></li>
-                    <li data-username="Maps Google" 
-                         class="nav-item {% if 'maps-google' in segment %} active {% endif %}">
-                        <a href="/maps-google.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">Maps</span></a></li>
-                    <li class="nav-item pcoded-menu-caption">
-                        <label>Pages</label>
-                    </li> -->
+
+        <li class="nav-item pcoded-menu-caption">
+          <label>DATA ANALYSIS PAGE</label>
+        </li>
+        <li
+          data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds"
+          class="nav-item pcoded-hasmenu"
+        >
+        <li class="">
+          <a href="{% url 'eda' %}" class=""
+            ><i class="feather icon-layers"></i><b> Visualizations</b></a
+          >
+        </li>
+        </li>
+
+        <li class="nav-item pcoded-menu-caption">
+          <label>AUTHENTICATION</label>
+        </li>
 
         <li
           data-username="Authentication Sign up Sign in reset password Change password Personal information profile settings map form subscribe"
@@ -72,24 +79,16 @@
             ><span class="pcoded-mtext"><b>Authentication</b></span></a
           >
           <ul class="pcoded-submenu">
+
             <li class="">
-              <a href="/auth-reset-pass.html" class=""><b>Reset Pass</b></a>
+              <a href="{% url 'logout' %}" class=""><i class="feather icon-power" style="color: red;"></i></span
+                ><span class="pcoded-mtext"> <b>Login out</b></span></a>
             </li>
-            <li class="">
-              <a href="/login.html" class=""><b>Login (template)</b></a>
-            </li>
-            <li class="">
-              <a href="/register.html" class=""><b>Register (template)</b></a>
-            </li>
+
           </ul>
         </li>
+     
 
-        <li data-username="Disabled Menu" class="nav-item">
-          <a href="{% url 'logout' %}" class="nav-link">
-            <span class="pcoded-micon"><i class="feather icon-power"></i></span
-            ><span class="pcoded-mtext"><b>Logout</b></span>
-          </a>
-        </li>
       </ul>
     </div>
   </div>

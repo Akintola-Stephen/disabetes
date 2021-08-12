@@ -17,13 +17,13 @@
                     <div class="mb-4">
                         <i class="feather icon-unlock auth-icon"></i>
                     </div>
-                    <h3 class="mb-4">Login</h3>
+                    <h3 class="mb-4"><b>Login</b></h3>
 
-                    <span class="mb-0 text-muted">
+                    <span class="mb-0 text-muted" >
                         {% if msg %}
-                            {{ msg | safe }}
+                            <b style="color:red;">{{ msg | safe }}</b>
                         {% else %}
-                            Add your credentials
+                            <b>Add your credentials</b>
                         {% endif %} 
                     </span>
 
@@ -45,14 +45,14 @@
                         <div class="form-group text-left">
                             <div class="checkbox checkbox-fill d-inline">
                                 <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
-                                <label for="checkbox-fill-a1" class="cr"> Save Details</label>
+                                <label for="checkbox-fill-a1" class="cr"><b> Save Details </b></label>
                             </div>
                         </div>
-                        <button type="submit" name="login" class="btn btn-primary shadow-2 mb-4">Login</button>
+                        <button type="submit" name="login" class="btn btn-primary btn-block shadow-2 mb-4"><b>Login</b></button>
 
                     </form>
 
-                    <p class="mb-0 text-muted">Don’t have an account? <a href="{% url 'register' %}" >Sign UP</a></p>
+                    <p class="mb-0 text-muted"><b>Don’t have an account? </b> <a href="{% url 'register' %}" ><b>Sign UP</b></a></p>
                     <br />
                     
                 </div>

@@ -17,13 +17,13 @@
                     <div class="mb-4">
                         <i class="feather icon-user-plus auth-icon"></i>
                     </div>
-                    <h3 class="mb-4">Sign up</h3>
+                    <h3 class="mb-4"><b>Sign up</b></h3>
 
                     <span class="mb-0 text-muted">
                         {% if msg %}
                             {{ msg | safe }}
                         {% else %}
-                            Add your credentials
+                            <b>Add your credentials</b>
                         {% endif %} 
                     </span>
 
@@ -54,11 +54,11 @@
                         </div>
                         <span class="text-error">{{ form.password2.errors }}</span>
                  
-                        <button type="submit" name="register" class="btn btn-primary shadow-2 mb-4">Register</button>
+                        <button type="submit" name="register" class="btn btn-primary btn-block shadow-2 mb-4"><b>Register</b></button>
 
                     </form>
 
-                    <p class="mb-0 text-muted">Already have an account? <a href="{% url 'login' %}" >Login</a></p>
+                    <p class="mb-0 text-muted"><b>Already have an account? </b> <a href="{% url 'login' %}" ><b>Login</b></a></p>
                     <br />
                     
                 </div>

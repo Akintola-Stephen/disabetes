@@ -3,6 +3,7 @@
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %} {% block content %}
 
+
 <div class="pcoded-content">
   <div class="pcoded-inner-content">
     <!-- [ breadcrumb ] start -->
@@ -49,9 +50,9 @@
                   >
                 </li>
               </ul>
-              <div class="tab-content" id="myTabContent">
+              <div class="tab-content"  id="myTabContent">
                 <div
-                  class="tab-pane fade"
+                  class="tab-pane active fade"
                   id="home"
                   role="tabpanel"
                   aria-labelledby="home-tab"
@@ -63,6 +64,8 @@
                         <th>Age</th>
                         <th>Gender</th>
                         <th>Status</th>
+                        <th></th>
+                        <th>Report</th>
                         <th class="text-right"></th>
                       </tr>
                     </thead>
@@ -113,15 +116,29 @@
                           <i class="fas fa-circle text-c-red f-10"></i>
                         </td>
 
-                        {% endif %}
+                        <td><button class="btn btn-success fa fa-pencil" data-toggle="modal" data-target="#myModal" title="edit item" style="font-family:ubuntu" data-tooltip><b>Report</b></button></td>
+                        {% endif %} 
+
+                        {% empty %}
+           
+                        
+                     
+                      <tr>
+                        <td colspan="7" class="text-center bg-warning"><b>No record Found</b></td>
                       </tr>
+                              
+                      </tr>
+                   
                       {% endfor %}
+
+
                     </tbody>
                   </table>
+                  
                 </div>
 
                 <div
-                  class="tab-pane fade active show"
+                  class="tab-pane fade show"
                   id="profile"
                   role="tabpanel"
                   aria-labelledby="profile-tab"
@@ -174,6 +191,16 @@
                           <i class="fas fa-circle text-c-red f-10"></i>
                         </td>
                       </tr>
+
+                      {% empty %}
+           
+                        
+                     
+                      <tr>
+                        <td colspan="7" class="text-center bg-warning"><b>No record Found</b></td>
+                      </tr>
+                              
+
                       {% endfor %}
                     </tbody>
                   </table>
@@ -231,6 +258,15 @@
                           <i class="fas fa-circle text-c-green f-10"></i>
                         </td>
                       </tr>
+
+                      {% empty %}
+           
+                        
+                     
+                      <tr>
+                        <td colspan="7" class="text-center bg-warning"><b>No record Found</b></td>
+                      </tr>
+                              
                       {% endfor %}
                     </tbody>
                   </table>
@@ -244,7 +280,31 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+     
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" onclick="window.print(); return false;"><b>print report</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}{% endblock javascripts %}
+

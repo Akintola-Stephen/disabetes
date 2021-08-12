@@ -25,3 +25,7 @@ class Person(models.Model):
     age = models.IntegerField(null=True)
     predicted_result = models.BooleanField(default=False)
 
+    
+    def __str__(self):
+        return self.name
+

@@ -6942,7 +6942,7 @@ pre[class*=language-]:after, pre[class*=language-]:before {
 
 button{
   padding: 10px 10px 10px 10px;
-  border-radius: 0px;
+  border-radius: 5px;
 }
 
 .cust-file-button .custom-file-label {
@@ -7672,7 +7672,7 @@ a.btn-theme.active {
 
 .btn {
   padding: 10px 10px 10px 10px;
-  border-radius: 0px;
+  border-radius: 5px;
   font-size: 14px;
   margin-bottom: 5px;
   margin-right: 10px;
