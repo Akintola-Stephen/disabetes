@@ -4905,7 +4905,7 @@ body.box-layout .pcoded-navbar.theme-horizontal ~ .pcoded-header {
   top: 0;
   background: rgba(0, 0, 0, 0.7);
 }
-.pcoded-navbar.navbar-image-1 {
+/* .pcoded-navbar.navbar-image-1 {
   background-image: url("../images/nav-bg/navbar-img-1.jpg");
 }
 .pcoded-navbar.navbar-image-2 {
@@ -4919,7 +4919,7 @@ body.box-layout .pcoded-navbar.theme-horizontal ~ .pcoded-header {
 }
 .pcoded-navbar.navbar-image-5 {
   background-image: url("../images/nav-bg/navbar-img-5.jpg");
-}
+} */
 
 /* ====== [ Menu background images end ] ========== */
 /* ====== [ Menu title color start ] ============== */
@@ -5105,7 +5105,7 @@ body.box-layout .pcoded-navbar.theme-horizontal ~ .pcoded-header {
 .doc-img.navbar-images > a span:before {
   background: transparent;
 }
-.doc-img.navbar-images > a[data-value="navbar-image-1"] {
+/* .doc-img.navbar-images > a[data-value="navbar-image-1"] {
   background-image: url("../images/nav-bg/navbar-img-1.jpg");
 }
 .doc-img.navbar-images > a[data-value="navbar-image-2"] {
@@ -5122,7 +5122,7 @@ body.box-layout .pcoded-navbar.theme-horizontal ~ .pcoded-header {
 }
 .doc-img.navbar-images > a[data-value="navbar-image-6"] {
   background-image: url("../images/nav-bg/navbar-img-6.jpg");
-}
+} */
 
 .nav-link.active.h-blue {
   background: #04a9f5 !important;
