@@ -7,6 +7,7 @@ from django import template
 from .models import Person
 import numpy as np
 import joblib
+import os , sys
 
 
 @login_required(login_url="/login/")
@@ -96,8 +97,7 @@ def diagnosis(request):
         if (person.age == ""):
             person.age = 0
 
-        ml_pickled_model = "mlmodel.pkl"
-
+        ml_pickled_model = os.path.join(sys.path[0], "mlmodel.pkl")
 
         person_data = np.array(
             [
@@ -140,20 +140,20 @@ def result_list(request):
     return render(request, 'ui-tables.html', context)
 
 
-def eda(request):
-    labels = []
-    data = []
+# def eda(request):
+#     labels = []
+#     data = []
 
-    diabetic = Person.objects.filter(predicted_result=1)
-    non_diabetic = Person.objects.filter(predicted_result=0)
+#     diabetic = Person.objects.filter(predicted_result=1)
+#     non_diabetic = Person.objects.filter(predicted_result=0)
 
-    queryset = Person.objects.order_by('-predicted_result')
+#     queryset = Person.objects.order_by('-predicted_result')
 
-    for result in queryset:
-        labels.append(result.name)
-        data.append(result.insulin)
+#     for result in queryset:
+#         labels.append(result.name)
+#         data.append(result.insulin)
 
-        print(result.insulin)
-        print(data)
+#         print(result.insulin)
+#         print(data)
 
-    return render(request, 'ui-tabs.html', {'data': data, 'labels': labels, 'diabetic': diabetic, 'non_diabetic': non_diabetic})
+#     return render(request, 'ui-tabs.html', {'data': data, 'labels': labels, 'diabetic': diabetic, 'non_diabetic': non_diabetic})
