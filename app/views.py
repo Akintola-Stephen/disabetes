@@ -7,7 +7,7 @@ from django import template
 from .models import Person
 import numpy as np
 import joblib
-import os , sys
+import os
 
 
 @login_required(login_url="/login/")
@@ -97,7 +97,7 @@ def diagnosis(request):
         if (person.age == ""):
             person.age = 0
 
-        ml_pickled_model = os.path.join(sys.path[0], "mlmodel.pkl")
+        ml_pickled_model = "ml model.pkl"
 
         person_data = np.array(
             [
@@ -108,6 +108,8 @@ def diagnosis(request):
                 ]
             ]
         ).reshape(1, 8)
+        
+
 
         test_model = joblib.load(open(ml_pickled_model, 'rb'))
         prediction = test_model.predict(person_data)
