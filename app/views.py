@@ -1,5 +1,3 @@
-# -*- encoding: utf-8 -*-
-
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -22,9 +20,7 @@ def index(request):
     for result in queryset:
         labels.append(result.name)
         data.append(result.insulin)
-       
 
-      
         print(result.insulin)
 
     context = {}
@@ -34,24 +30,23 @@ def index(request):
     male_count = Person.objects.filter(gender="Male").count()
     female_count = Person.objects.filter(gender="Female").count()
 
-
     if female_count <= 0:
         female_precent_count = 0
     else:
-        female_precent_count = ( female_count / records_count ) * 100
+        female_precent_count = (female_count / records_count) * 100
 
     if male_count <= 0:
         male_precent_count = 0
-    else:    
-        male_precent_count =  100 - female_precent_count
+    else:
+        male_precent_count = 100 - female_precent_count
 
     context = {'records_count': records_count,
                'diabetic_count': diabetic_count,
                'non_diabetic_count': non_diabetic_count,
                'male_count': male_count,
                'female_count': female_count,
-               'female_precent_count': round(female_precent_count,2),
-               'male_precent_count': round(male_precent_count,2),               
+               'female_precent_count': round(female_precent_count, 2),
+               'male_precent_count': round(male_precent_count, 2),
                'labels': labels,
                'data': data,
                }
@@ -62,7 +57,6 @@ def index(request):
     return HttpResponse(html_template.render(context, request))
 
 
-@login_required(login_url="/login/")
 def diagnosis(request):
     if request.method == "POST":
         person = Person()
@@ -74,7 +68,6 @@ def diagnosis(request):
         if (person.pregnancy == ""):
             person.pregnancy = 0
 
-        
         person.glucose = request.POST.get("Glucose")
         if (person.glucose == ""):
             person.glucose = 0
@@ -103,7 +96,6 @@ def diagnosis(request):
         if (person.age == ""):
             person.age = 0
 
-
         ml_pickled_model = "../django-datta-able-master/app/ml model.pkl"
 
         person_data = np.array(
@@ -125,10 +117,8 @@ def diagnosis(request):
     return render(request, 'ui-forms.html', {'form': 'context'})
 
 
-@login_required(login_url="/login/")
 def result_list(request):
     person = Person()
-
 
     all_records = Person.objects.all()
     diabetic = Person.objects.filter(predicted_result=1)
@@ -146,10 +136,7 @@ def result_list(request):
     context = {'all_records': all_records, 'users': users,
                'diabetic': diabetic, 'non_diabetic': non_diabetic}
 
-    
     return render(request, 'ui-tables.html', context)
-
-
 
 
 def eda(request):
@@ -164,8 +151,8 @@ def eda(request):
     for result in queryset:
         labels.append(result.name)
         data.append(result.insulin)
-    
+
         print(result.insulin)
         print(data)
 
-    return render(request, 'ui-tabs.html', {'data': data , 'labels': labels , 'diabetic': diabetic, 'non_diabetic': non_diabetic})
+    return render(request, 'ui-tabs.html', {'data': data, 'labels': labels, 'diabetic': diabetic, 'non_diabetic': non_diabetic})
