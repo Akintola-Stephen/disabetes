@@ -97,7 +97,7 @@ def diagnosis(request):
         if (person.age == ""):
             person.age = 0
 
-        ml_pickled_model = "ml model.pkl"
+        ml_pickled_model = "mlmodel.pkl"
 
         person_data = np.array(
             [
